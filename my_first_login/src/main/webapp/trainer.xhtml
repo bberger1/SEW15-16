@@ -21,20 +21,29 @@
 						<f:facet name="header">
 							<h:outputLabel value="Result = left * right" />
 						</f:facet>
-						<!-- TODO
-						outputLabel fuer msg.left
-						outputLabel fuer card.left mit id "left"
-						selbiges fuer msg.right bzw. card.right -->
+						
+						<h:outputLabel value="#{msg.left}" />
+						<h:outputLabel id="left" value="#{card.left}" />
+						<h:outputLabel value="#{msg.right}" />
+						<h:outputLabel id="right" value="#{card.right}" />
 
 						<f:facet name="footer">
-							<!-- TODO outputLabel und outputText fuer result -->
+							<h:outputLabel value="Your Results: " />
+							<h:inputText id="result" value="#{card.result}" />
 						</f:facet>
 					</p:panelGrid>
 					<br />
-					<!-- TODO drei buttons: card.show / msg.show, card.next / msg.next, user.logout / msg.logout -->
 					
-					<h:messages layout="table"></h:messages>
+					<p:commandButton action="#{card.show}"
+						ajax="false" value="#{msg.show}" />
+					<p:commandButton action="#{card.next}"
+						ajax="false" value="#{msg.next}" type="submit" />
+					<p:commandButton action="#{user.logout}"
+						ajax="false" value="#{msg.logout}" />
+					<h:messages layout="table" />
 				</h:form>
+				
+				
 				<!-- Our user hasn't logged in yet! -->
 				<h:form rendered="#{!user.loggedIn}">
 					<p:commandLink action="/loginView.xhtml"

@@ -35,11 +35,14 @@ public class User {
 	}
 
 	public String login() {
-		String ret = "failed";
+		if(password.equals("12345") && name.equals("Berger")){
+			loggedIn = true;
+			return "success";
+		} else {
+			return "failed";
+		}
 		// TODO name und password ueberpruefen - im Fehlerfall "failed" returnen,
 		// ansonsten "loggedIn" auf true setzen und "success" returnen
-		
-		return ret;
 	}
 
 	public String logout() {
